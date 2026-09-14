@@ -9,7 +9,7 @@ on:
 
 jobs:
   gold-tests:
-    name: Gold Badge (all browsers)
+    name: Gold Badge (smoke gate + full suite)
     runs-on: ubuntu-latest
     timeout-minutes: 40
     # Browsers + OS deps preinstalled — no install-deps / playwright install steps
@@ -33,6 +33,11 @@ jobs:
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
+
+      - name: Quality gate — smoke
+        run: npm run test:gold:smoke
+        env:
+          CI: true
 
       - name: Run Gold Badge tests (Chromium, Firefox, WebKit)
         run: npm run test:gold

@@ -7,6 +7,7 @@ const commonSettings = {
   headless: true,
   screenshot: 'only-on-failure' as const,
   video: 'retain-on-failure' as const,
+  trace: 'on-first-retry' as const,
   baseURL: 'https://3cloudsolutions.com',
 };
 
@@ -29,6 +30,7 @@ const contactListSettings = {
   headless: true,
   screenshot: 'only-on-failure' as const,
   video: 'retain-on-failure' as const,
+  trace: 'on-first-retry' as const,
   baseURL: CONTACT_LIST_BASE_URL,
   actionTimeout: BADGE_BASE_TIMEOUT_MS,
   navigationTimeout: BADGE_NAVIGATION_TIMEOUT_MS,
